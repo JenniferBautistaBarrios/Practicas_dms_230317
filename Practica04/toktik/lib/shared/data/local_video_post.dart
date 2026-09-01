@@ -33,39 +33,39 @@ List<Map<String, dynamic>> videoPosts = [
     'views': 31030,
   },
   {
-    'name': 'Reflexiones de la vida',
+    'name': 'Videos de IA',
     'videoUrl': 'assets/videos/6.mp4',
     'likes': 10,
     'views': 330,
   },
   // 7 - Maquillaje
   {
-    'name': 'Tutorial de maquillaje fácil',
+    'name': 'Cocardo',
     'videoUrl': 'assets/videos/7.mp4',
     'likes': 1320,
     'views': 33032,
   },
   // 8 a 11 - Libres
   {
-    'name': 'Gatito curioso',
+    'name': 'Trailer de la pelicula "El Boulevard de los sueños rotos"',
     'videoUrl': 'assets/videos/8.mp4',
     'likes': 342,
     'views': 3332,
   },
   {
-    'name': 'Atardecer en la playa',
+    'name': 'Obsesion',
     'videoUrl': 'assets/videos/9.mp4',
     'likes': 5120,
     'views': 40210,
   },
   {
-    'name': 'Receta rápida de quesadillas',
+    'name': 'Obsesion',
     'videoUrl': 'assets/videos/10.mp4',
     'likes': 880,
     'views': 9400,
   },
   {
-    'name': 'Rutina de ejercicio en casa',
+    'name': 'Trailer de la pelicula "El Boulevard de los sueños rotos"',
     'videoUrl': 'assets/videos/11.mp4',
     'likes': 2750,
     'views': 18900,
