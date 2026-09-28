@@ -14,26 +14,26 @@ List<Map<String, dynamic>> videoPosts = [
     'views': 134,
   },
   {
-    'name': 'Yo quería que me amara un poco más (2)',
+    'name': 'My Huachinago ',
     'videoUrl': 'assets/videos/3.mp4',
     'likes': 21564320,
     'views': 123563,
   },
-  // 4, 5 y 6 - La Rosa de Guadalupe
+ 
   {
-    'name': 'La Rosa de Guadalupe - Escena 1',
+    'name': 'Tecnologias de la informacion',
     'videoUrl': 'assets/videos/4.mp4',
-    'likes': 320,
+    'likes': 12000,
     'views': 2300,
   },
   {
-    'name': 'La Rosa de Guadalupe - Escena 2',
+    'name': 'Ofits de ropa',
     'videoUrl': 'assets/videos/5.mp4',
     'likes': 3230,
     'views': 31030,
   },
   {
-    'name': 'La Rosa de Guadalupe - Escena 3',
+    'name': 'Reflexiones de la vida',
     'videoUrl': 'assets/videos/6.mp4',
     'likes': 10,
     'views': 330,
