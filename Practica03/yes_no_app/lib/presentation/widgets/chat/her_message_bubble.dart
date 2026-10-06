@@ -1,11 +1,17 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class HerMessageBubble extends StatelessWidget {
-  const HerMessageBubble({super.key});
+  final Message message;
+
+  const HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final size = MediaQuery.of(context).size;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,47 +21,51 @@ class HerMessageBubble extends StatelessWidget {
             color: colors.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Hola Mundo',
-              style: TextStyle(color: Colors.white),
+              message.isLoading ? 'Pensando...' : message.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
-        const SizedBox(height: 5),
-
-        _ImageBubble(),
-
+        if (message.imageUrl != null) ...[
+          const SizedBox(height: 5),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              message.imageUrl!,
+              width: size.width * 0.7,
+              height: 150,
+              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return SizedBox(
+                  width: size.width * 0.7,
+                  height: 150,
+                  child: const Center(child: CircularProgressIndicator()),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                developer.log(
+                  'No se pudo cargar el GIF ${message.imageUrl}',
+                  error: error,
+                  stackTrace: stackTrace,
+                  name: 'HerMessageBubble',
+                );
+                return const SizedBox(
+                  width: 220,
+                  height: 90,
+                  child: Center(
+                    child: Text('No se pudo cargar el GIF. Revisa tu conexión.'),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
         const SizedBox(height: 10),
       ],
-    );
-  }
-}
-
-class _ImageBubble extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.network(
-        'https://media.tenor.com/R_m5yodt5mEAAAAM/crazy-love.gif',
-        width: size.width * 0.7,
-        height: 150,
-        fit: BoxFit.cover,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-
-          return Container(
-            width: size.width * 0.7,
-            height: 150,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: const Text('Mi amor está enviando una imagen'),
-          );
-        },
-      ),
     );
   }
 }
